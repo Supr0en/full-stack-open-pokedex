@@ -4,7 +4,6 @@ on:
     push:
         branches:
             - master
-            # note that your "main" branch might be called main instead of master
     pull_request:
         branches: [master]
         types: [opened, synchronize]
@@ -46,8 +45,8 @@ jobs:
     tag_release:
         needs: [simple_deployment_pipeline]
         runs-on: ubuntu-20.04
-        steps: 
-        - name: Bump version and push tag
+        steps:
+            - name: Bump version and push tag
               if: ${{ github.event_name == 'pull' }}
               uses: anothrNick/github-tag-action@1.36.0
               env:
