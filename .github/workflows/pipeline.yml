@@ -4,7 +4,7 @@ on:
     push:
         branches:
             - master
-    pull:
+    pull_request:
         branches: [master]
         types: [opened, synchronize]
 
@@ -50,7 +50,7 @@ jobs:
               with:
                   fetch-depth: '0'
             - name: Bump version and push tag
-              if: ${{ github.event_name == 'pull' }}
+              if: ${{ github.event_name == 'pull_request' }}
               uses: anothrNick/github-tag-action@1.36.0
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
