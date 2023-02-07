@@ -61,7 +61,8 @@ jobs:
                   DEFAULT_BUMP: patch
 
             - name: version success
-              if success()
+              uses: rjstone/discord-webhook-notify@v1
+              if: success()
               with:
                   severity: error
                   details: version deploy succeeded!
